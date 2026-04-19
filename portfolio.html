@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio • Ketan Verma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <nav class="nav-inner">
+      <a href="./index.html" class="nav-link">Home</a>
+      <a href="./electric-guitar.html" class="nav-link">Electric Guitar</a>
+      <a href="./portfolio.html" class="nav-link nav-link--active">Portfolio</a>
+      <a href="./resume.html" class="nav-link">Resume</a>
+    </nav>
+  </header>
+  <div class="nav-spacer"></div>
+
+  <div class="bg-kenburns fixed-bg"></div>
+  <div class="bg-dim fixed-bg"></div>
+
+  <main class="portfolio">
+  <div class="container--narrow">
+    <h1 class="section-title">Projects &amp; Experience</h1>
+    <p class="intro">
+      I’m a Computer Engineering student who enjoys building practical, scalable systems. Recently:
+      SWE Intern at Samsung Semiconductor, President of tidalTAMU (Texas A&amp;M’s AI/ML org),
+      and applied research on LLMs.
+    </p>
+  </div>
+
+    <section class="cards">
+      <!-- EXPERIENCE -->
+      <article class="card">
+        <h3>Software Engineer (Intern) — Samsung Semiconductor</h3>
+        <div class="meta">May 2025 – Aug 2025 • Austin, TX</div>
+        <p>
+          Built a Python/Pandas ML pipeline and tuned Random Forests to uncover more wafer defects with fewer false
+          positives. Developed PySpark workflows streaming sensor data to real-time dashboards for early process drift detection.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>President — tidalTAMU (AI/ML @ Texas A&amp;M)</h3>
+        <div class="meta">Jan 2023 – Present • College Station, TX</div>
+        <p>
+          Led workshops on CNNs and image detection, and organized four major hackathons including a 300-member ML event
+          with partners such as Google Cloud, NVIDIA, Microsoft, and AWS. Organization of the Year 2024.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Undergraduate Research — Texas A&amp;M University</h3>
+        <div class="meta">Aug 2024 – Aug 2025</div>
+        <p>Evaluated Large Language Models for disfluency removal.</p>
+      </article>
+
+      <article class="card">
+        <h3>Chief Operating Officer — Century Capital Investments</h3>
+                <div class="meta">May 2025 – Present</div>
+        <p>Operations leadership for a student-led investment group.</p>
+      </article>
+
+      <!-- PROJECTS -->
+      <article class="card">
+        <h3>Financial Forecaster for Companies</h3>
+        <div class="meta">Python, Pandas, Scikit-learn, Flask</div>
+        <p>
+          Built models to forecast quarterly financial metrics (-20% MSE). Included feature engineering (lagged features,
+          rolling averages, ratios) and a Flask web UI for deployment.
+          <br /><a href="https://github.com/ketanverma123/Financial-Forecaster" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">GitHub repo</a>
+        </p>
+      </article>
+
+      <!-- CERTS / LINKS -->
+      <article class="card">
+        <h3>Certifications & Links</h3>
+        <p>
+          Trinity College London — Rock &amp; Pop Guitar Grade 4 • IBM — Machine Learning with Python
+          <br />LinkedIn: <a href="https://www.linkedin.com/in/ketan-verma12/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">ketan-verma12</a>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      let lastY = window.scrollY || 0;
+      function onScroll() {
+        const y = window.scrollY || 0;
+        if (y > 10) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled');
+        if (y > lastY && y > 120) nav.classList.add('nav--hidden'); else nav.classList.remove('nav--hidden');
+        lastY = y;
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>

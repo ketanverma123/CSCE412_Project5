@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume • Ketan Verma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <nav class="nav-inner">
+      <a href="./index.html" class="nav-link">Home</a>
+      <a href="./electric-guitar.html" class="nav-link">Electric Guitar</a>
+      <a href="./portfolio.html" class="nav-link">Portfolio</a>
+      <a href="./resume.html" class="nav-link nav-link--active">Resume</a>
+    </nav>
+  </header>
+  <div class="nav-spacer"></div>
+
+  <div class="bg-kenburns fixed-bg"></div>
+  <div class="bg-dim fixed-bg"></div>
+
+  <main class="pdf-center">
+    <embed src="./Ketan Verma Resume.pdf#zoom=FitH" type="application/pdf" class="pdf-embed" />
+    <p class="pdf-fallback">Can’t see the PDF? <a href="./Ketan Verma Resume.pdf" download>Download it here.</a></p>
+  </main>
+
+  <script>
+    (function () {
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      let lastY = window.scrollY || 0;
+      function onScroll() {
+        const y = window.scrollY || 0;
+        if (y > 10) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled');
+        if (y > lastY && y > 120) nav.classList.add('nav--hidden'); else nav.classList.remove('nav--hidden');
+        lastY = y;
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>

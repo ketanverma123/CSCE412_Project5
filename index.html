@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ketan Verma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Top nav -->
+  <header class="nav">
+    <nav class="nav-inner">
+      <a href="./index.html" class="nav-link nav-link--active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="./electric-guitar.html" class="nav-link">Electric Guitar</a>
+      <a href="./portfolio.html" class="nav-link">Portfolio</a>
+      <a href="./resume.html" class="nav-link">Resume</a>
+    </nav>
+  </header>
+  <div class="nav-spacer"></div>
+
+  <!-- Global stars -->
+  <div class="bg-kenburns fixed-bg"></div>
+  <div class="bg-dim fixed-bg"></div>
+
+  <main>
+    <!-- HERO: matrix -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="./matrix.gif" alt="">
+      </div>
+      <div class="hero-row">
+        <img src="./matrix.gif" alt="" class="note-gif note-gif--left" aria-hidden="true" />
+        <h1 class="title"><span class="name-bob">KETAN VERMA</span></h1>
+        <img src="./matrix.gif" alt="" class="note-gif note-gif--right" aria-hidden="true" />
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container">
+        <img class="about-img" src="./me.jpg" alt="Photo of Ketan Verma" />
+        <div class="about-text">
+          <h2 class="about-title">About Me</h2>
+          <p>
+            Hi, I’m <strong>Ketan Verma</strong> — a Computer Engineering student who loves turning ideas into working
+            projects. I’ve worked across software engineering and machine learning, from building data pipelines at
+            Samsung to leading TIDAL, Texas A&amp;M’s AI/ML club, where we grew into one of the largest tech groups on campus.
+          </p>
+          <p>
+            Outside of coding, you’ll usually find me on the soccer field or playing electric guitar — both keep me
+            creative, disciplined, and always learning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIALS -->
+    <section id="socials" class="socials">
+      <div class="container--narrow">
+        <h2 class="section-title">Socials</h2>
+        <ul class="social-list">
+          <li>
+            <a class="social-link" href="https://www.linkedin.com/in/ketan-verma12/" target="_blank" rel="noopener">
+              <img src="./linkedin.png" alt="LinkedIn" class="social-icon" />
+              <span class="social-label">LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://www.instagram.com/kxtxan/" target="_blank" rel="noopener">
+              <img src="./instagram.png" alt="Instagram" class="social-icon" />
+              <span class="social-label">Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://github.com/ketanverma123" target="_blank" rel="noopener">
+              <img src="./github.jpg" alt="GitHub" class="social-icon" />
+              <span class="social-label">GitHub</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Hide/show nav on scroll -->
+  <script>
+    (function () {
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      let lastY = window.scrollY || 0;
+      function onScroll() {
+        const y = window.scrollY || 0;
+        if (y > 10) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled');
+        if (y > lastY && y > 120) nav.classList.add('nav--hidden'); else nav.classList.remove('nav--hidden');
+        lastY = y;
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>

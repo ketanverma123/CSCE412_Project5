@@ -1,0 +1,169 @@
+/* ============ Base ============ */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ============ Global starry background ============ */
+@keyframes kenburns { 0%{transform:scale(1.05)} 50%{transform:scale(1.12) translate(-2%,1%)} 100%{transform:scale(1.05)} }
+.bg-kenburns { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.bg-kenburns::before { content:""; position: absolute; inset: -5%; background: url("./bg.png") center/cover no-repeat; animation: kenburns 36s ease-in-out infinite; filter: saturate(1.05); }
+.bg-dim { position: absolute; inset: 0; z-index: -1; background: radial-gradient(80% 80% at 50% 20%, rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 60%, rgba(0,0,0,.65) 100%); }
+.fixed-bg { position: fixed; inset: 0; }
+
+/* ============ Top navigation (solid bg when scrolled, hides on scroll down) ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 10px 20px;
+  height: 52px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease;
+  will-change: transform;
+}
+.nav--scrolled { background: rgba(0,0,0,.7); backdrop-filter: blur(6px); box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+.nav--hidden  { transform: translateY(-100%); }
+
+.nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-evenly; }
+.nav-link { color: #fff; text-decoration: none; font-weight: 600; opacity: .9; padding: 6px 10px; }
+.nav-link:hover { opacity: 1; text-decoration: underline; }
+.nav-link--active { opacity: 1; }
+.nav-spacer { height: 52px; }
+
+/* ============ Headings (all Poppins) ============ */
+.title,
+.about-title,
+.section-title,
+.guitar-title {
+  font-family: 'Poppins', sans-serif;
+}
+
+.title { font-weight: 800; font-size: clamp(40px, 6vw, 64px); letter-spacing: 1px; margin: 0; }
+.about-title, .section-title, .guitar-title { font-weight: 700; font-size: clamp(28px, 4vw, 36px); margin: 0 0 10px; }
+
+/* ============ Hero (Matrix bg) ============ */
+:root{
+  --note-size: clamp(160px, 18vw, 300px);
+  --note-gap:  clamp(56px, 10vw, 140px);
+  --note-offset: clamp(60px, 12vw, 220px);
+}
+.hero{
+  min-height: calc(100vh - 52px);
+  display: grid; place-items: center;
+  overflow: hidden; position: relative; z-index: 5;
+}
+.hero-bg{ position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.hero-bg img{
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: .6; mix-blend-mode: screen; filter: saturate(1.2) contrast(1.05);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 62%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 62%, rgba(0,0,0,0) 100%);
+}
+.hero::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:160px; pointer-events:none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 70%, rgba(0,0,0,.85) 100%);
+}
+.hero-row{ display: inline-flex; align-items: center; gap: var(--note-gap); }
+.note-gif{ width: var(--note-size); height:auto; filter: drop-shadow(0 4px 10px rgba(0,0,0,.35)); mix-blend-mode: screen; }
+.note-gif--left{ transform: translateX(calc(-1 * var(--note-offset))); }
+.note-gif--right{ transform: translateX(var(--note-offset)); }
+@keyframes bob { 0%{transform:translateY(0)} 50%{transform:translateY(-8px)} 100%{transform:translateY(0)} }
+.name-bob{ display:inline-block; animation:bob 3.8s ease-in-out infinite; }
+@media (max-width:560px){ :root{ --note-size:96px; --note-gap:28px; --note-offset:0px; } .title{ font-size:clamp(32px, 9vw, 48px);} }
+
+/* ============ About ============ */
+.about { padding: 56px 20px; position: relative; z-index: 5; }
+.container { max-width: 1100px; margin: 0 auto; display: grid; gap: 28px; align-items: center; }
+@media (min-width: 860px) { .container { grid-template-columns: 360px 1fr; gap: 40px; } }
+.about-img { width: 100%; max-width: 360px; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.08); }
+.about-text p { color:#e6e6e6; line-height:1.7; margin:0 0 14px; }
+.about-meta { color:#bdbdbd; }
+.about-meta a { color:#fff; text-decoration: underline; }
+
+/* ============ Socials ============ */
+.container--narrow{ max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.socials{ position: relative; z-index: 5; padding: 80px 0 140px; }
+.socials .section-title{ text-align:center; margin-bottom: 22px; } /* centered heading */
+.social-list{ list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:28px 40px; }
+.social-link{ display:inline-flex; align-items:center; gap:12px; color:#fff; text-decoration:none; padding:8px 12px; border-radius:12px; transition:.2s; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); box-shadow:0 4px 12px rgba(0,0,0,.35); backdrop-filter: blur(2px); }
+.social-link:hover{ transform:translateY(-3px); box-shadow:0 10px 24px rgba(0,0,0,.55); background:rgba(255,255,255,.07); }
+.social-icon{ width:48px; height:48px; border-radius:8px; object-fit:cover; }
+.social-label{ font-weight:600; letter-spacing:.02em; color:#f1f1f1; }
+
+/* ============ Electric Guitar page ============ */
+.bg-gif { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.eg-hero { position: relative; z-index: 5; min-height: calc(100vh - 52px); display: grid; place-items: center; overflow: hidden; }
+.eg-page .bg-dim { background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.55) 75%, rgba(0,0,0,0.70) 100%); }
+
+.guitar { position: relative; z-index: 5; padding: 56px 20px 72px; }
+.guitar .container {
+  max-width: 1100px; margin: 0 auto;
+  background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px; padding: 24px; backdrop-filter: blur(1.5px);
+  display: block; /* stack heading, blurb, gallery */
+}
+.guitar-title { margin: 0 0 12px 0; }
+.guitar-intro { margin: 0 0 18px; color: #d9d9d9; line-height: 1.75; }
+
+/* Gallery grid — smaller thumbs */
+.guitar-gallery { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; }
+.guitar-img {
+  width: 100%;
+  height: clamp(160px, 24vw, 260px);
+  object-fit: cover;           /* default: crop to fill */
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.guitar-img:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 16px 36px rgba(0,0,0,.55); }
+
+/* OVERRIDE: show full photo (no crop) on images with this class */
+.guitar-gallery .guitar-img.guitar-img--full {
+  object-fit: contain !important;
+  height: auto !important;
+  width: 100% !important;
+  max-height: 320px !important;
+  display: block;
+  background: rgba(255,255,255,0.03);
+  padding: 6px;
+  border-radius: 14px;
+  align-self: start;
+  justify-self: center;
+}
+
+/* ============ Portfolio (Projects/Experience) ============ */
+.portfolio { padding: 72px 20px 96px; position: relative; z-index: 5; }
+.portfolio .section-title{ text-align:center; margin-bottom: 10px; }
+.portfolio .intro { max-width: 900px; margin: 8px auto 28px; text-align: center; color:#e6e6e6; line-height:1.75; }
+
+.cards { max-width: 1100px; margin: 0 auto; display: grid; gap: 24px; grid-template-columns: 1fr; }
+@media (min-width: 900px){ .cards{ grid-template-columns: 1fr 1fr; gap: 28px; } }
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 18px 18px 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+}
+.card h3{ margin: 0 0 6px; font-weight: 700; }
+.card .meta{ color:#cfcfcf; font-size: .95rem; margin-bottom: 8px; }
+.card p{ margin: 0; color:#e9e9e9; line-height: 1.65; }
+
+/* ============ Resume page ============ */
+.pdf-center { min-height: calc(100vh - 52px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px; }
+.pdf-embed { width: min(900px, 92vw); height: min(1160px, 82vh); border: none; background: #111; box-shadow: 0 10px 30px rgba(0,0,0,0.45); border-radius: 8px; }
+.pdf-fallback { color:#ddd; font-size:.95rem; }
+.pdf-fallback a { color:#fff; font-weight:600; text-decoration:underline; }
+
+/* ============ Accessibility ============ */
+@media (prefers-reduced-motion: reduce) {
+  .bg-kenburns::before { animation: none; }
+  .name-bob { animation: none; }
+  .hero-bg img { animation: none; }
+}

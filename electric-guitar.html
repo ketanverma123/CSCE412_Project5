@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Electric Guitar • Ketan Verma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="eg-page">
+  <!-- Top nav -->
+  <header class="nav">
+    <nav class="nav-inner">
+      <a href="./index.html" class="nav-link">Home</a>
+      <a href="./electric-guitar.html" class="nav-link nav-link--active">Electric Guitar</a>
+      <a href="./portfolio.html" class="nav-link">Portfolio</a>
+      <a href="./resume.html" class="nav-link">Resume</a>
+    </nav>
+  </header>
+  <div class="nav-spacer"></div>
+
+  <!-- Background GIF + dimmer -->
+  <img src="./guitar.gif" alt="" class="bg-gif fixed-bg">
+  <div class="bg-dim fixed-bg"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="eg-hero">
+      <h1 class="title"><span class="name-bob">Electric Guitar</span></h1>
+    </section>
+
+    <!-- Gallery section -->
+    <section id="guitar" class="guitar">
+      <div class="container">
+        <h2 class="guitar-title">Gallery</h2>
+
+        <p class="guitar-intro">
+          I’ve been playing the electric guitar since I was 8 years old and performed on multiple stages as a kid.
+          I’ve also passed the Trinity College London Rock &amp; Pop exams up to Grade 4.
+          I’m into heavy metal—Pantera, Metallica, Black Sabbath, Megadeth—and rock like AC/DC and Arctic Monkeys.
+        </p>
+
+        <div class="guitar-gallery">
+          <!-- Left (normal full-bleed thumbnail) -->
+          <img class="guitar-img" src="./guitar1.jpeg" alt="Electric guitar photo 1">
+
+          <!-- Middle: show the entire image (no crop) -->
+          <img class="guitar-img guitar-img--full" src="./guitar2.jpeg" alt="Electric guitar photo 2">
+
+          <!-- Right (normal) -->
+          <img class="guitar-img" src="./trinity.png" alt="Trinity College London Rock &amp; Pop certification graphic">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Hide/show nav on scroll -->
+  <script>
+    (function () {
+      const nav = document.querySelector('.nav');
+      if (!nav) return;
+      let lastY = window.scrollY || 0;
+      function onScroll() {
+        const y = window.scrollY || 0;
+        if (y > 10) nav.classList.add('nav--scrolled'); else nav.classList.remove('nav--scrolled');
+        if (y > lastY && y > 120) nav.classList.add('nav--hidden'); else nav.classList.remove('nav--hidden');
+        lastY = y;
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>
